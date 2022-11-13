@@ -1,8 +1,9 @@
+import time
+
 from pages.base_page import BasePage
 
 
 class Dashboard(BasePage):
-
     button_main_xpath = "// div[contains (@class, 'MuiListItemIcon-root')]"
     button_players_xpath = "//span[text()='Players' or text()='Gracze']"
     players_count_xpath = "//div[text()='Players count' or text()='Ilość graczy']"
@@ -23,3 +24,9 @@ class Dashboard(BasePage):
     button_last_upd_report_xpath = "//h6[text()='Last updated report']"
     button_add_player_xpath = "//span[text()='Add player']"
     image_logo_xpath = "//div[@title='Logo Scouts Panel']"
+    login_url = "https://scouts-test.futbolkolektyw.pl/en/"
+    expected_title = "Scouts panel"
+
+    def title_of_page(self):
+        time.sleep(4)
+        assert self.get_page_title(self.login_url) == self.expected_title

@@ -1,6 +1,7 @@
 import os
 import unittest
 from selenium import webdriver
+from page.login_page import LoginPage
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
@@ -40,6 +41,7 @@ class TestMediumPage(unittest.TestCase):
         assert actual_title == expected_title
 
     def get_page_title(self, url):
+        self.driver.get(url)
         return self.driver.title
 
     @classmethod

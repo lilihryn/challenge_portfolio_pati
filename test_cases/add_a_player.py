@@ -3,35 +3,39 @@ import time
 import unittest
 from selenium import webdriver
 
-from pages.base_page import BasePage
+from pages.add_a_player_page import AddAPlayer
 from pages.dashboard import Dashboard
 from pages.login_page import LoginPage
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
-class TestLoginPage(unittest.TestCase):
-
+class TestAddAPlayer(unittest.TestCase):
 
     @classmethod
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
         self.driver = webdriver.Chrome(executable_path=DRIVER_PATH)
-        self.driver.get('https://scouts-test.futbolkolektyw.pl/en')
+        self.driver.get('https://scouts-test.futbolkolektyw.pl/en/players/add')
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
-    def test_login_to_the_system(self):
-
+    def test_add_a_player(self):
         user_login = LoginPage(self.driver)
-        base_page = BasePage(self.driver)
-        base_page.assert_element_text(self.driver, "//h5[text()='Scouts Panel']", 'Scouts Panel')
         user_login.type_in_email('user01@getnada.com')
         user_login.type_in_password('Test-1234')
         user_login.sign_in_button()
         dashboard_page = Dashboard(self.driver)
         dashboard_page.title_of_page()
-        time.sleep(5)
 
+        user_add_a_player = AddAPlayer(self.driver)
+        user_add_a_player.player_add_button()
+        user_add_a_player.player_name('Liliia')
+        user_add_a_player.player_surname('Hryniuk1')
+        user_add_a_player.player_age('13.12.1988')
+        user_add_a_player.player_position('Defender')
+        user_add_a_player.button_submit()
+        user_add_a_player.title_of_page()
+        time.sleep(5)
 
     @classmethod
     def tearDown(self):
