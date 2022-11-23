@@ -1,7 +1,6 @@
 import os
 import unittest
 from selenium import webdriver
-from page.login_page import LoginPage
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
@@ -35,6 +34,7 @@ class TestMediumPage(unittest.TestCase):
         self.driver.get('https://medium.com/')
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
+
     def test_check_title(self):
         actual_title = self.get_page_title("https://medium.com/")
         expected_title = "Medium – Where good ideas find you."
