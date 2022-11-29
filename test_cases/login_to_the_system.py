@@ -55,6 +55,18 @@ class TestLoginPage(unittest.TestCase):
         user_login.title_of_login_page()
         user_login.change_the_language()
 
+    def test_log_out_from_page(self):
+        user_login = LoginPage(self.driver)
+        user_login.title_of_login_page()
+        user_login.type_in_email('user01@getnada.com')
+        user_login.type_in_password('Test-1234')
+        user_login.click_on_sign_in_button()
+        dashboard_page = Dashboard(self.driver)
+        dashboard_page.title_of_page()
+        dashboard_page.sign_out_from_the_system()
+        user_login.wait_to_find_title()
+
+
 
 
     @classmethod
