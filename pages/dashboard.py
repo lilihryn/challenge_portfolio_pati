@@ -22,7 +22,7 @@ class Dashboard(BasePage):
     button_last_upd_report_xpath = "//h6[text()='Last updated report']"
     button_add_player_xpath = "//span[text()='Add player']"
     image_logo_xpath = "//div[@title='Logo Scouts Panel']"
-    login_url = "https://scouts-test.futbolkolektyw.pl/en/"
+    login_url = "https://scouts.futbolkolektyw.pl/en/"
     expected_title = "Scouts panel"
 
     def title_of_page(self):

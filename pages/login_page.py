@@ -11,7 +11,7 @@ class LoginPage(BasePage):
     login_field_xpath = "//input[@name='login']"
     password_field_xpath = "//input[@id='password']"
     sign_in_button_xpath = "//button[@type='submit']"
-    login_url = "https://scouts-test.futbolkolektyw.pl/en/"
+    login_url = "https://scouts.futbolkolektyw.pl/en/"
     remind_password_url = "https://scouts-test.futbolkolektyw.pl/en/remind"
     password_invalid_xpath = "//*[@id='__next']/form/div/div[1]/div[3]/span"
     expected_text_wrong_password = 'Identifier or password invalid.'
